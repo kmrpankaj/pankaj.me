@@ -6,6 +6,7 @@
   --accent: #0ea5e9;
   --card: #f5f7fa;
   --border: #e5e7eb;
+  --header-h: 64px;
 }
 
 :root[data-theme='dark'] {
@@ -58,7 +59,7 @@ a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 0;
+  min-height: calc(100vh - var(--header-h));
 }
 
 .header {
@@ -67,6 +68,12 @@ a:hover {
   justify-content: space-between;
   gap: 1rem;
   padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 100;
+  border-bottom: 1px solid var(--border);
+  min-height: var(--header-h);
 }
 
 .brand {
