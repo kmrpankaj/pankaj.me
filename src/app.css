@@ -7,6 +7,8 @@
   --card: #f5f7fa;
   --border: #e5e7eb;
   --header-h: 64px;
+  --header-bg-from: color-mix(in lab, var(--bg) 96%, var(--accent) 4%);
+  --header-bg-to: var(--bg);
 }
 
 :root[data-theme='dark'] {
@@ -16,6 +18,8 @@
   --accent: #22d3ee;
   --card: #111827;
   --border: #1f2937;
+  --header-bg-from: color-mix(in lab, var(--bg) 94%, var(--accent) 6%);
+  --header-bg-to: var(--bg);
 }
 
 * {
@@ -64,21 +68,51 @@ a:hover {
 
 .header {
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
-  padding: 1rem 0;
+  padding: 1rem 1rem;
   position: sticky;
   top: 0;
-  background: var(--bg);
+  background: linear-gradient(180deg, var(--header-bg-from), var(--header-bg-to));
   z-index: 100;
   border-bottom: 1px solid var(--border);
   min-height: var(--header-h);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.04);
 }
 
 .brand {
   font-weight: 700;
   color: var(--text);
+  letter-spacing: 0.02em;
+  position: relative;
+  display: inline-block;
+  transition: color 200ms ease, transform 200ms ease;
+}
+
+.brand::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--accent), transparent 70%);
+  border-radius: 2px;
+  transform-origin: left;
+  transform: scaleX(0.3);
+  opacity: 0.6;
+  transition: transform 220ms ease, opacity 220ms ease;
+}
+
+.brand:hover {
+  transform: translateY(-1px);
+}
+
+.brand:hover::after {
+  transform: scaleX(1);
+  opacity: 0.9;
 }
 
 .card {

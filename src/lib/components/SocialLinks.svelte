@@ -51,7 +51,17 @@
     border: 1px solid var(--border);
     background: var(--card);
     color: var(--text);
+    transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
   }
 
-  .social-link:hover { filter: brightness(1.03); }
+  .social-link:hover { 
+    filter: brightness(1.03);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+  }
+
+  .social-link:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 3px color-mix(in lab, var(--accent) 30%, transparent);
+  }
 </style>
