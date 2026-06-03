@@ -14,12 +14,11 @@
 
   <div class="bio">
     <p class="lead">
-      Hey, I’m Pankaj — building on the web since 2011, when WordPress themes felt like the future (and
-      honestly, they still hold up).
+      Hey, I’m Pankaj — building on the web since 2011, when WordPress themes were the coolest thing around (and honestly, they still are).
     </p>
     <p class="rest">
-      These days I work with JavaScript, PostgreSQL, UI/UX, and AI integrations to ship experiences that
-      are fast, functional, and a little addictive.  I’m the kind of guy who can spend hours perfecting a layout or talking about cars, gadgets, and design trends. Fueled by curiosity and coffee, I love turning ideas into
+      These days I work my magic with JavaScript, PostgreSQL, UI/UX, and AI integrations to ship experiences that
+      are fast, functional, and a little addictive.  I’m the kind of guy who can spend hours perfecting a layout or talking about cars, gadgets, and design trends. Fueled by curiosity and <del>coffee</del> kadak chai, I love turning ideas into
       things people actually enjoy using.
     </p>
   </div>
