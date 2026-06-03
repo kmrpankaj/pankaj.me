@@ -1,15 +1,19 @@
 <script>
+  import { SOCIAL_LINKS } from '$lib/site.js';
+
   export let align = 'left';
-  const socials = [
-    { href: 'https://github.com/kmrpankaj', label: 'GitHub', icon: 'github' },
-    { href: 'https://x.com/impankajk', label: 'X (Twitter)', icon: 'x' },
-    { href: 'https://www.linkedin.com/in/impankajk/', label: 'LinkedIn', icon: 'linkedin' }
-  ];
 </script>
 
 <nav class="socials" data-align={align} aria-label="Social links">
-  {#each socials as s}
-    <a class="social-link" href={s.href} target="_blank" rel="noopener noreferrer" aria-label={s.label}>
+  {#each SOCIAL_LINKS as s, i}
+    <a
+      class="social-link icon-button"
+      href={s.href}
+      target="_blank"
+      rel="me noopener noreferrer"
+      aria-label={s.label}
+      style="animation-delay: {280 + i * 70}ms"
+    >
       {#if s.icon === 'github'}
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
           <path d="M12 .5a12 12 0 0 0-3.79 23.41c.6.11.82-.26.82-.58 0-.29-.01-1.05-.02-2.06-3.34.73-4.04-1.61-4.04-1.61-.55-1.39-1.35-1.76-1.35-1.76-1.1-.75.08-.73.08-.73 1.22.09 1.86 1.25 1.86 1.25 1.08 1.85 2.84 1.32 3.53 1 .11-.78.42-1.32.77-1.62-2.66-.3-5.46-1.33-5.46-5.93 0-1.31.47-2.38 1.24-3.22-.12-.31-.54-1.56.12-3.25 0 0 1.01-.32 3.31 1.23.96-.27 1.99-.4 3.01-.4s2.05.13 3.01.4c2.3-1.55 3.31-1.23 3.31-1.23.66 1.69.24 2.94.12 3.25.77.84 1.24 1.91 1.24 3.22 0 4.61-2.8 5.63-5.47 5.93.43.37.81 1.1.81 2.22 0 1.6-.01 2.89-.01 3.29 0 .32.22.7.83.58A12 12 0 0 0 12 .5Z"/>
@@ -27,41 +31,42 @@
       {/if}
     </a>
   {/each}
-
 </nav>
 
 <style>
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
   .socials {
     display: flex;
-    gap: 0.75rem;
-    margin-top: 1rem;
+    gap: 0.625rem;
+    margin: 0;
     justify-content: var(--justify, flex-start);
   }
 
-  .socials[data-align='center'] { --justify: center; }
-  .socials[data-align='right'] { --justify: flex-end; }
+  .socials[data-align='center'] {
+    --justify: center;
+  }
+
+  .socials[data-align='right'] {
+    --justify: flex-end;
+  }
 
   .social-link {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    height: 36px;
-    width: 36px;
-    border-radius: 10px;
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--text);
-    transition: transform 180ms ease, box-shadow 180ms ease, filter 180ms ease;
+    opacity: 0;
+    animation: fadeUp 500ms ease forwards;
+    text-decoration: none;
   }
 
-  .social-link:hover { 
-    filter: brightness(1.03);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.06);
-  }
-
-  .social-link:focus-visible {
-    outline: none;
-    box-shadow: 0 0 0 3px color-mix(in lab, var(--accent) 30%, transparent);
+  .social-link:hover {
+    text-decoration: none;
   }
 </style>

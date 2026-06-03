@@ -8,6 +8,16 @@ declare global {
 		// interface PageState {}
 		// interface Platform {}
 	}
+
+	interface Window {
+		dataLayer?: unknown[];
+		gtag?: (...args: unknown[]) => void;
+	}
+}
+
+declare module '$env/static/public' {
+	export const PUBLIC_SITE_URL: string;
+	export const PUBLIC_GA_MEASUREMENT_ID: string;
 }
 
 export {};
